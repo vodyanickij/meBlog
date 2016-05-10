@@ -47,6 +47,11 @@ $config = [
             ],
         ],
     ],
+    'modules' => [
+        'blog' => [
+            'class' => 'app\modules\blog\Module',
+        ],
+    ],
     'params' => $params,
 ];
 
