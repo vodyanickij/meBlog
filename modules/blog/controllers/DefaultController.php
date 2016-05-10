@@ -51,7 +51,7 @@ class DefaultController extends Controller
 
         if ($AllPosts) {            
             return $this->render('index', [
-                'posts'  = $AllPosts,
+                 'posts' => $AllPosts,
                 
             ]);
         }

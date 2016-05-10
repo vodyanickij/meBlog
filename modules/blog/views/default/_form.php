@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\ckeditor\CKEditor;
+use himiklab\thumbnail\EasyThumbnailImage;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\blog\models\Posts */

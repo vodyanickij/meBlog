@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+// use yii\grid\GridView;
+use himiklab\thumbnail\EasyThumbnailImage;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\blog\models\PostsSearch */
@@ -15,22 +16,27 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <?php if(!Yii::$app->user->getisGuest()){ ?>
     <p>
-        <?= Html::a('Create Posts', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('New Post', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    <?php } ?>
 
-            'id',
-            'title',
-            'text:ntext',
-            'text_preview',
-            'img',
+    <div class="row">
+    <?php foreach ($posts as $arr) { ?>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src=" <?= $arr->img ?>"  alt="...">
+              <div class="caption">
+                <h3><?= $arr->title ?></h3>
+                <p><?= $arr->text_preview ?></p>
+                <p><a href="/blog/view/default?id=<?= $arr->id ?>" class="btn btn-primary" role="button">Button</a> 
+              </div>
+            </div>
+          </div>
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+         <?php } ?>
+
+        </div>
+    
 </div>
